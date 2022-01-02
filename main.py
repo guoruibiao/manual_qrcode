@@ -4,6 +4,7 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import os
 import sys
+import shutil
 import qrcode
 import numpy as np
 import matplotlib.pyplot as plt
@@ -147,7 +148,9 @@ class Main(QMainWindow, Ui_MainWindow):
         for row_index, row in enumerate(self.output_steps):
             line = "第{}行：".format(row_index+1) + ",  ".join([str(item) for item in row])
             msg += line + "\n"
+        shutil.copy(self.output_img_path, output)
         QMessageBox.information(self, "绘制步骤", msg, QMessageBox.Yes, QMessageBox.Yes)
+
 
 
 # Press the green button in the gutter to run the script.
